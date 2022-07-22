@@ -1,4 +1,4 @@
-from cv2 import *
+import cv2 
 import pyfiglet
 import os
 
@@ -6,16 +6,15 @@ appname = 'who am i'
 
 def capture():
     cam_port = 0
-    cam = VideoCapture(cam_port)
+    cam = cv2.VideoCapture(cam_port)
     
     result, image = cam.read()
-    imshow(appname, image)
     while True:
-
-        key = waitKey(20)
+        cv2.imshow(appname, image)
+        key = cv2.waitKey(20)
         if key == 27: # exit on ESC
             break
-    destroyWindow(appname)
+    cv2.destroyWindow(appname)
   
 def clear_screen():
     name = os.name;
